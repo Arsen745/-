@@ -1,0 +1,21 @@
+import sqlite3
+
+def display_data():
+    try:
+        conn = sqlite3.connect('mydatabase.db')
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM users")
+        rows = cursor.fetchall()
+
+        for row in rows:
+            print(row)
+
+    except Exception as e:
+        print(f"An error occurred while displaying data: {e}")
+
+    finally:
+        conn.close()
+
+# Вызываем функцию для вывода данных
+display_data()
